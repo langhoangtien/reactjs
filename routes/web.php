@@ -12,7 +12,8 @@
 */
 
 Route::group(['prefix' => 'api'], function () {
-    Route::resource('users', 'UserController');    
+    Route::resource('users', 'UserController'); 
+    Route::resource('posts','PostController');   
 });
 Route::view('/{any}', 'welcome')
     ->where('any', '.*');
