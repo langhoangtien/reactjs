@@ -29247,6 +29247,8 @@ var UserRow = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -29254,6 +29256,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -29269,10 +29272,13 @@ var CreatePost = function (_Component) {
 		_this.state = {
 			title: "phuong",
 			description: "",
-			author: ""
+			author: "",
+			category_id: 3
 		};
 		_this.changeTitle = _this.changeTitle.bind(_this);
 		_this.changeDescription = _this.changeDescription.bind(_this);
+		_this.submitForm = _this.submitForm.bind(_this);
+		_this.changeAuthor = _this.changeAuthor.bind(_this);
 		return _this;
 	}
 
@@ -29291,6 +29297,30 @@ var CreatePost = function (_Component) {
 			});
 		}
 	}, {
+		key: 'changeAuthor',
+		value: function changeAuthor(e) {
+			this.setState({
+				author: e.target.text
+			});
+		}
+	}, {
+		key: 'submitForm',
+		value: function submitForm(e) {
+			e.preventDefault();
+			var url = window.Laravel.baseUrl + '/api/posts';
+			var data = {
+				title: this.state.title,
+				description: this.state.description,
+				category_id: this.state.category_id
+
+			};
+			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.post(url, data).then(function (response) {
+				alert('Them bai viet thanh cong');
+			}).catch(function (error) {
+				alert('Them bai viet khong thanh cong');
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
 			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -29299,7 +29329,7 @@ var CreatePost = function (_Component) {
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'h1',
 					null,
-					'Create new Post'
+					'Create Post rt'
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
@@ -29314,8 +29344,14 @@ var CreatePost = function (_Component) {
 					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('textarea', { className: 'form-control', value: this.state.description, onChange: this.changeDescription })
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'div',
+					{ className: 'form-group' },
+					'Author',
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { type: 'number', className: 'form-control', value: this.state.author, onChange: this.changeAuthor })
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'button',
-					{ className: 'btn btn-primary' },
+					{ onClick: this.submitForm, className: 'btn btn-primary' },
 					'Submit'
 				)
 			);

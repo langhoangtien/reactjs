@@ -36,7 +36,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-     
+      Post::create($request->all());
+        return response()
+            ->json(['message' => 'Success: You have added a post']);
     }
 
     /**
