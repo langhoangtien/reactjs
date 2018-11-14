@@ -31,6 +31,7 @@ import CreateUser from './components/CreateUser'
 import EditUser from './components/EditUser'
 import UserList from './components/UserList'
 import CreatePost from './components/CreatePost'
+import PostList from './components/PostList'
 
 const history = createBrowserHistory()
 render (

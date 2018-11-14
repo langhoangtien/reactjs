@@ -12,7 +12,7 @@ class CreatePost extends Component{
 		}
 		this.changeTitle = this.changeTitle.bind(this)
 		this.changeDescription = this.changeDescription.bind(this)
-		this.submitForm = this.submitForm.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 		this.changeAuthor = this.changeAuthor.bind(this)
 	}
 
@@ -24,26 +24,26 @@ class CreatePost extends Component{
 	}
 	changeDescription(e){
 		this.setState({
-			description:e.target.text
+			description:e.target.value
 		})
 	}
 	changeAuthor(e){
 		this.setState({
-			author:e.target.text
+			author:e.target.value
 		})
 	}
-	submitForm(e){
+	handleSubmit(e){
 		e.preventDefault()
 		let url =window.Laravel.baseUrl + '/api/posts'
 		const data = {
 			title: this.state.title,
 			description: this.state.description,
-			category_id: this.state.category_id
+			category_id: this.state.author
 
 		}
 		axios.post(url,data)
 		.then(response => {
-			alert('Them bai viet thanh cong')
+			this.props.history.push('/post')
 		})
 		.catch(function(error) {
 			alert('Them bai viet khong thanh cong')
@@ -54,7 +54,7 @@ class CreatePost extends Component{
 	render(){
 		return (
 			<App>
-			<h1>Create Post rt</h1>
+			<h1>Create Post</h1>
 			<div className="form-group">
 			Title
 			<input className="form-control" value={this.state.title} onChange={this.changeTitle}/>
@@ -67,7 +67,7 @@ class CreatePost extends Component{
 			Author
 			<input type="number" className="form-control" value={this.state.author} onChange={this.changeAuthor} />
 			</div>
-			<button onClick={this.submitForm} className="btn btn-primary">Submit</button>
+			<button type="submit" onClick={this.handleSubmit} className="btn btn-primary">Submit</button>
 			</App>
 			)
 	}
