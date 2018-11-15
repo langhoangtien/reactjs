@@ -40,6 +40,7 @@ class UserList extends Component {
         <div className='clearfix'>
           <Link className='btn btn-success pull-right' to='/users/create'>Add User</Link>
           <Link className='btn btn-success pull-right' to='/posts/create'>Add post</Link>
+          <Link className='btn btn-success pull-right' to='/posts/list'>post</Link>
         </div><br />
         <table className='table table-hover'>
           <thead>

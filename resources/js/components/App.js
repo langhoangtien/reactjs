@@ -17,14 +17,15 @@ class App extends Component {
                 <span className='icon-bar' />
               </button>
               <Link className='navbar-brand' to='/'>
-                Laravel 5.7 - ReactJS Example
+                Laravel 5.8 - ReactJS Example
               </Link>
             </div>
-            <div className='collapse navbar-collapse' id='app-navbar-collapse'>
+            <div className='navbar-collapse' id='app-navbar-collapse'>
               <ul className='nav navbar-nav'>
-                <li><Link to='/users'>Users</Link></li>
+                <li><Link to='/users'>Users 5</Link></li>
                 <li><Link to='/users/create'>Add User t</Link></li>
-                <li><Link to='/posts/create'>Add Post</Link></li>
+                <li><Link to='/posts/create'>Add Post 6</Link></li>
+                <li><Link to='/posts/list'>Post List</Link></li>
               </ul>
             </div>
           </div>

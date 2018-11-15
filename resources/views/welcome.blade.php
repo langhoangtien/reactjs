@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Laravel 5.7 - ReactJS Example</title>
+        <title>Laravel 5.7 - ReactJS Example 345</title>
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
         <script type="text/javascript">
             window.Laravel = {!! json_encode([

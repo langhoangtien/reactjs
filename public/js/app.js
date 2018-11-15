@@ -915,12 +915,12 @@ var App = function (_Component) {
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* Link */],
                 { className: 'navbar-brand', to: '/' },
-                'Laravel 5.7 - ReactJS Example'
+                'Laravel 5.8 - ReactJS Example'
               )
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
-              { className: 'collapse navbar-collapse', id: 'app-navbar-collapse' },
+              { className: 'navbar-collapse', id: 'app-navbar-collapse' },
               __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'ul',
                 { className: 'nav navbar-nav' },
@@ -930,7 +930,7 @@ var App = function (_Component) {
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* Link */],
                     { to: '/users' },
-                    'Users'
+                    'Users 5'
                   )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -948,7 +948,16 @@ var App = function (_Component) {
                   __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* Link */],
                     { to: '/posts/create' },
-                    'Add Post'
+                    'Add Post 6'
+                  )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'li',
+                  null,
+                  __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["a" /* Link */],
+                    { to: '/posts/list' },
+                    'Post List'
                   )
                 )
               )
@@ -2889,7 +2898,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_EditUser__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_UserList__ = __webpack_require__(91);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_CreatePost__ = __webpack_require__(93);
-throw new Error("Cannot find module \"./components/PostList\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_PostList__ = __webpack_require__(99);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -2930,6 +2939,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1_react_dom__["render"])(__WEBPACK_IMPORTED_MOD
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/create', component: __WEBPACK_IMPORTED_MODULE_4__components_CreateUser__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/users/edit/:id', component: __WEBPACK_IMPORTED_MODULE_5__components_EditUser__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/posts/create', component: __WEBPACK_IMPORTED_MODULE_7__components_CreatePost__["a" /* default */] }),
+    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/posts/list', component: __WEBPACK_IMPORTED_MODULE_8__components_PostList__["a" /* default */] }),
     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { path: '/', component: __WEBPACK_IMPORTED_MODULE_6__components_UserList__["a" /* default */] })
   )
 ), document.getElementById('app'));
@@ -29092,6 +29102,11 @@ var UserList = function (_Component) {
             __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
             { className: 'btn btn-success pull-right', to: '/posts/create' },
             'Add post'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            __WEBPACK_IMPORTED_MODULE_2_react_router_dom__["a" /* Link */],
+            { className: 'btn btn-success pull-right', to: '/posts/list' },
+            'post'
           )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('br', null),
@@ -29272,10 +29287,10 @@ var CreatePost = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (CreatePost.__proto__ || Object.getPrototypeOf(CreatePost)).call(this, props));
 
 		_this.state = {
-			title: "phuong",
+			title: "",
 			description: "",
 			author: "",
-			category_id: 3
+			category_id: ""
 		};
 		_this.changeTitle = _this.changeTitle.bind(_this);
 		_this.changeDescription = _this.changeDescription.bind(_this);
@@ -29339,7 +29354,7 @@ var CreatePost = function (_Component) {
 					'div',
 					{ className: 'form-group' },
 					'Title',
-					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', value: this.state.title, onChange: this.changeTitle })
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('input', { className: 'form-control', value: this.state.title, required: true, onChange: this.changeTitle })
 				),
 				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
 					'div',
@@ -29372,6 +29387,215 @@ var CreatePost = function (_Component) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__PostRow__ = __webpack_require__(100);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var PostList = function (_Component) {
+	_inherits(PostList, _Component);
+
+	function PostList(props) {
+		_classCallCheck(this, PostList);
+
+		var _this = _possibleConstructorReturn(this, (PostList.__proto__ || Object.getPrototypeOf(PostList)).call(this, props));
+
+		_this.state = {
+			posts: ''
+		};
+		_this.getPost();
+		return _this;
+	}
+
+	_createClass(PostList, [{
+		key: 'getPost',
+		value: function getPost() {
+			var _this2 = this;
+
+			var url = window.Laravel.baseUrl + '/api/posts';
+			__WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(url).then(function (res) {
+				_this2.setState({ posts: res.data });
+				console.log(res.data);
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+	}, {
+		key: 'fetchRows',
+		value: function fetchRows() {
+			if (this.state.posts instanceof Array) {
+				return this.state.posts.map(function (item, i) {
+					return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__PostRow__["a" /* default */], { item: item, key: i, index: i });
+				});
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				__WEBPACK_IMPORTED_MODULE_1__App__["a" /* default */],
+				null,
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'table',
+					{ className: 'table' },
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'thead',
+						null,
+						__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+							'tr',
+							null,
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								null,
+								'STT'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								null,
+								'Ti\xEAu \u0111\u1EC1'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								null,
+								'M\xF4 t\u1EA3'
+							),
+							__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+								'th',
+								null,
+								'H\xE0nh \u0111\u1ED9ng'
+							)
+						)
+					),
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'tbody',
+						null,
+						this.fetchRows()
+					)
+				)
+			);
+		}
+	}]);
+
+	return PostList;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (PostList);
+
+/***/ }),
+/* 100 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(9);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+var PostRow = function (_Component) {
+	_inherits(PostRow, _Component);
+
+	function PostRow(props) {
+		_classCallCheck(this, PostRow);
+
+		var _this = _possibleConstructorReturn(this, (PostRow.__proto__ || Object.getPrototypeOf(PostRow)).call(this, props));
+
+		_this.deletePost = _this.deletePost.bind(_this);
+		return _this;
+	}
+
+	_createClass(PostRow, [{
+		key: 'deletePost',
+		value: function deletePost() {
+			var key = confirm('Do you want to delete this?');
+			var url = window.Laravel.baseUrl + '/api/posts/' + this.props.item.id;
+			if (key) {
+				__WEBPACK_IMPORTED_MODULE_2_axios___default.a.delete(url).then(function (res) {
+					console.log(res);
+					alert(res.data.message);
+				}).catch(function (error) {
+					console.log(error);
+					alert(error.data.error);
+				});
+			}
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+				'tr',
+				null,
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'td',
+					null,
+					this.props.item.id
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'td',
+					null,
+					this.props.item.title
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'td',
+					null,
+					this.props.item.description
+				),
+				__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+					'td',
+					null,
+					__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+						'button',
+						{ className: 'btn btn-danger', onClick: this.deletePost },
+						'Delete'
+					)
+				)
+			);
+		}
+	}]);
+
+	return PostRow;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/* harmony default export */ __webpack_exports__["a"] = (PostRow);
 
 /***/ })
 /******/ ]);

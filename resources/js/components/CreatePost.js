@@ -5,10 +5,10 @@ class CreatePost extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			title:"phuong",
+			title:"",
 			description:"",
 			author:"",
-			category_id:3
+			category_id:""
 		}
 		this.changeTitle = this.changeTitle.bind(this)
 		this.changeDescription = this.changeDescription.bind(this)
@@ -57,7 +57,7 @@ class CreatePost extends Component{
 			<h1>Create Post</h1>
 			<div className="form-group">
 			Title
-			<input className="form-control" value={this.state.title} onChange={this.changeTitle}/>
+			<input className="form-control" value={this.state.title} required onChange={this.changeTitle}/>
 			</div>
 			<div className="form-group">
 			Description

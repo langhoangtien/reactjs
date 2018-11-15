@@ -40,6 +40,8 @@ render (
       <Route path='/users/create' component={CreateUser} />
       <Route path='/users/edit/:id' component={EditUser} />
       <Route path='/posts/create' component={CreatePost} />
+      <Route path='/posts/list' component={PostList} />
       <Route path='/' component={UserList} />
+
     </Switch>
   </Router>, document.getElementById('app'))
