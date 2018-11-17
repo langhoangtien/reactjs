@@ -32,6 +32,7 @@ import EditUser from './components/EditUser'
 import UserList from './components/UserList'
 import CreatePost from './components/CreatePost'
 import PostList from './components/PostList'
+import EditPost from './components/EditPost'
 
 const history = createBrowserHistory()
 render (
@@ -41,7 +42,9 @@ render (
       <Route path='/users/edit/:id' component={EditUser} />
       <Route path='/posts/create' component={CreatePost} />
       <Route path='/posts/list' component={PostList} />
+      <Route path='/posts/edit:id' component={EditPost} />
       <Route path='/' component={UserList} />
+
 
     </Switch>
   </Router>, document.getElementById('app'))

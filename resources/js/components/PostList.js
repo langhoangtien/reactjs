@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import App from './App'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import PostRow from './PostRow'
+
 
 
 class PostList extends Component {
@@ -12,6 +12,7 @@ class PostList extends Component {
 			posts:''
 		}
 		this.getPost()
+		
 	}
 
 
@@ -23,16 +24,23 @@ class PostList extends Component {
 			console.log(res.data)
 		})
 		.catch(function(error){
-			console.log(error)
+			alert('Lấy dữ liệu không thành công')
 		})
 		
+	}
+	deleteRow(key){
+		var post = [...this.state.posts];
+		post.splice(key,1);
+		this.setState({posts:post});
 	}
 	fetchRows () {
 		if(this.state.posts instanceof Array){
 			return this.state.posts.map( (item, i) => {
-				return <PostRow item={item} key={i} index={i} />
+				return <PostRow item={item} key={i} index={i} deleteRow= {this.deleteRow.bind(this)}  />
 			})
 		}
+
+
 	}
 	render(){
 	return (	
@@ -44,6 +52,7 @@ class PostList extends Component {
 					<th>Tiêu đề</th>
 					<th>Mô tả</th>
 					<th>Hành động</th>
+					<th></th>
 				</tr>
 				</thead>
 				<tbody>
@@ -51,6 +60,46 @@ class PostList extends Component {
 				</tbody>
 			</table>
 		</App>
+		)
+	}
+}
+
+
+
+class PostRow extends Component {
+	constructor(props){
+		super(props)
+		this.deletePost = this.deletePost.bind(this)
+		// this.editPost = this.editPost.bind(this)
+	}
+	deletePost(){
+		let key = confirm('Do you want to delete this?')
+		let url = window.Laravel.baseUrl + '/api/posts/'+this.props.item.id
+		if(key)
+		{
+			axios.delete(url)
+			.then(res =>{
+				this.props.deleteRow(this.props.index)
+			})
+			.catch(function(error){
+				console.log(error)
+				alert(error.data.error)
+			})
+		}
+	}
+	editPost(){
+		
+	}
+
+	render(){
+		return (
+			<tr>
+				<td>{this.props.item.id}</td>
+				<td>{this.props.item.title}</td>
+				<td>{this.props.item.description}</td>
+				<td><a href={'/posts/edit/' +this.props.item.id} className="btn btn-primary">Edit </a></td>
+				<td><button className="btn btn-danger" onClick={this.deletePost}>Delete</button></td>
+			</tr>
 		)
 	}
 }
